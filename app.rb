@@ -11,6 +11,10 @@ module Sinatra
     set :protection, :except => [:json_csrf]
     enable :inline_templates
 
+    configure do
+      set :bind, '0.0.0.0'
+    end
+
     before do
       if request.request_method == "POST"
         @data = request.body.read
